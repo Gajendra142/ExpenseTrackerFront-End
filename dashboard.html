@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboard | expense tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="CSS/dashboard.css" />
+  </head>
+  <body>
+    <div id="toast-container"></div>
+    <nav class="nav-bar fade-in">
+      <div class="nav-left"><h2>Expense Tracker</h2></div>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#feature">Features</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="#index.html#policy">Policy</a></li>
+          <button class="sign-up">Sign up</button>
+        </ul>
+      </div>
+    </nav>
+    <div class="layout-container">
+      <div class="side-bar">
+        <div class="profile-container">
+          <div class="user-profile">
+            <img id="profile-pic" src="https://via.placeholder.com/150">
+          </div>
+          <div class="user-info">
+            <p class="username">username</p>
+            <p class="email">email</p>
+          </div>
+        </div>
+        <nav class="side-nav">
+          <li>
+            <a href="#"></a><span><i class="fa-solid fa-chart-line"></i></span> Dashboard
+          </li>
+          <li>
+            <a href="#"></a>
+            <span><i class="fa-solid fa-plus-circle"></i></span> Expenses
+          </li>
+          <li>
+            <a href="#"></a>
+            <span><i class="fa-solid fa-chart-pie"></i></span> Reports
+          </li>
+          <li>
+            <a href="#"></a><span><i class="fa-solid fa-tags"></i></span> Categories
+          </li>
+          <li>
+            <a href="#"></a>
+            <span><i class="fa-solid fa-cog"></i></span> Settings
+          </li>
+        </nav>
+      </div>
+      <main class="main-content">
+        <section class="dashboard">
+          <h1 class="title">Dashboard</h1>
+          <div class="summary-cards">
+            <div class="card"><h2>Total Balance</h2><p id="total-balance">₹0.00</p></div>
+            <div class="card"><h2>Total Income</h2><p id="total-income">₹0.00</p></div>
+            <div class="card"><h2>Total Expenses</h2><p id="total-expenses">₹0.00</p></div>
+          </div>
+          <div class="chart-container">
+            <h2>Monthly Spending & Categories</h2>
+            <canvas id="monthlyChart"></canvas>
+          </div>
+          <div class="recent-transactions">
+            <h2>Recent Transactions</h2>
+            <div class="transaction-controls">
+                <input type="text" id="transaction-search" placeholder="Search transactions...">
+                <select id="transaction-sort">
+                    <option value="expenseDate,desc">Sort by Date (Newest)</option>
+                    <option value="expenseDate,asc">Sort by Date (Oldest)</option>
+                    <option value="amount,desc">Sort by Amount (High to Low)</option>
+                    <option value="amount,asc">Sort by Amount (Low to High)</option>
+                    <option value="category,asc">Sort by Category (A-Z)</option>
+                </select>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th data-field="expenseDate">Date ⬍</th>
+                  <th data-field="description">Title ⬍</th>
+                  <th data-field="category">Category ⬍</th>
+                  <th data-field="amount">Amount ⬍</th>
+                </tr>
+              </thead>
+              <tbody id="transaction-body"></tbody>
+            </table>
+            <div class="pagination">
+              <button id="prev-page">Prev</button>
+              <span id="page-info">Page 1 of ?</span>
+              <button id="next-page">Next</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="JS/dashboard.js"></script>
+  </body>
+</html>

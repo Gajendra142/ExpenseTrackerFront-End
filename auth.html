@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authorization Page</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/CSS/auth.css" />
+  </head>
+  <body>
+    <!----------- toast notification --------->
+    <div id="toast-container"></div>
+
+    <!--------- nav-bar --------->
+    <nav class="nav-bar fade-in">
+      <div class="nav-left">
+        <h2>Expense Tracker</h2>
+      </div>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Policy</a></li>
+          <button class="sign-up">Sign up</button>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="inner-container">
+        <!-- LEFT SIDE -->
+        <div class="inner-container-left fade-in">
+          <h3>Hey, Welcome to Expense Tracker</h3>
+          <p>
+            Manage your expenses, track your spending, and stay in control of your budget
+            with ease. Let’s get started!
+          </p>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="inner-container-right fade-in">
+          <!-- LOGIN FORM -->
+          <form action="" id="login-form">
+            <h2>Login</h2>
+            <div class="input-box">
+              <input type="text" id="login-email" required />
+              <label for="login-email">Email</label>
+              <span class="error-message" id="loginEmailError"></span>
+            </div>
+            <div class="input-box">
+              <input type="password" id="login-password" required />
+              <label for="login-password">Password</label>
+              <span class="error-message" id="loginPasswordError"></span>
+              <br />
+              <a href="#">Forget password?</a>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+            <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+
+            <div class="other-login">
+              <p>or</p>
+              <div class="login-icons">
+                <a href="#"><i class="fa-brands fa-google"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </form>
+
+          <!-- REGISTER FORM -->
+          <form action="" id="register-form" class="hidden">
+            <h2>Register</h2>
+            <div class="input-box">
+              <input type="text" id="reg-name" required />
+              <label for="reg-name">Full Name</label>
+              <span class="error-message" id="regNameError"></span>
+            </div>
+            <div class="input-box">
+              <input type="email" id="reg-email" required />
+              <label for="reg-email">Email</label>
+              <span class="error-message" id="regEmailError"></span>
+            </div>
+            <div class="input-box">
+              <input type="password" id="reg-password" required />
+              <label for="reg-password">Password</label>
+              <span class="error-message" id="regPasswordError"></span>
+            </div>
+            <div class="input-box">
+              <input type="password" id="reg-confirm-password" required />
+              <label for="reg-confirm-password">Confirm Password</label>
+              <span class="error-message" id="regConfirmError"></span>
+            </div>
+            <button type="submit" class="login-btn">Register</button>
+            <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-------------------- Footer Section ------------------>
+    <footer>
+      <div class="footer-container fade-in">
+        
+        <!----- Logo & Description ----->
+        <div class="footer-logo">
+          <h2>ExpenseTracker</h2>
+          <p>Track your expenses, manage budgets, and gain insights into your spending habits effortlessly.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+    
+        <!------ Quick Links ----->
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+    
+        <!----- Resources / Downloads ----->
+        <div class="footer-links">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">App Downloads</a></li>
+          </ul>
+        </div>
+    
+        <!----- Newsletter & Contact ----->
+        <div>
+          <h3>Stay Updated</h3>
+          <p>Subscribe to our newsletter to get the latest updates.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="contact-info">
+            <p>Email: support@expensetracker.com</p>
+            <p>Phone: +1 (123) 456-7890</p>
+          </div>
+        </div>
+    
+      </div>
+    
+      <!----- Footer Bottom ----->
+      <div class="footer-bottom">
+        &copy; 2025 ExpenseTracker. All rights reserved. | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a>
+      </div>
+    </footer>
+
+
+    <script src="JS/auth.js"></script>
+  </body>
+</html>
