@@ -99,11 +99,12 @@ html{
     z-index: 500;
 }
 
-.nav-left h2{
+.nav-left h2  a{
     font-size: 1.8rem;
     font-weight: 500;
     color: #111;
     cursor: pointer;
+    text-decoration: none;
 }
 .nav-right{
     flex-basis: 45%;
@@ -157,9 +158,7 @@ html{
 }
 
 
-
 /* ========== Hero Section ============= */
-
 
 .hero-container{
     height: 100%;
@@ -265,7 +264,7 @@ main .about {
 }
 
 main .about .about-left {
-  background-image: url(/img/ChatGPT\ Image\ Sep\ 13\,\ 2025\,\ 12_40_34\ PM.png);
+  background-image: url(/img/Gemini_Generated_Image_8rinc68rinc68rin.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -308,7 +307,7 @@ main .contact{
 
 .contact-left {
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -318,22 +317,17 @@ main .contact{
     transition: 0.3s;
     padding: 50px;
 }
-
-/* Heading */
 .contact-left h4 {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 5px;
 }
-
-/* Paragraph */
 .contact-left p {
     font-size: 1rem;
     line-height: 1.5;
     color: #f0f0f0;
     text-align: center;
 }
-
 
 main .contact .contact-right{
     padding: 16px;
@@ -344,7 +338,7 @@ main .contact .contact-right{
         width: 500px;
 }
 .error {
-    color: red;
+    color: #a30000;
     font-size: 0.85rem;
     display: block;
     margin-top: 4px;
@@ -366,7 +360,7 @@ main .contact .contact-right{
     background: none;
     outline: none;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px 10px;
     background-color: #fff;
     box-shadow: 0 0 10px 1px rgba(0,0,0,0.1);
@@ -943,3 +937,113 @@ html, body {
   overflow-x: hidden;
 }
 
+/* ==================== Privacy and Terms Page Styles ==================== */
+
+/* Specific body style for the policy page to prevent large gaps */
+.policy-page {
+  padding-top: 120px; /* Adjust based on navbar height to prevent content from hiding */
+  padding-bottom: 50px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Header of the policy page */
+.policy-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #111;
+}
+
+.policy-header h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #7e22ce;
+}
+
+.policy-header p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Main content sections */
+.policy-section {
+  max-width: 900px;
+  margin: 0 auto 50px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  line-height: 1.6;
+}
+
+.policy-section h2 {
+  font-size: 2rem;
+  color: #4f46e5;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.policy-content {
+  color: #333;
+}
+
+.policy-content h4 {
+  font-size: 1.3rem;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #9333ea;
+}
+
+.policy-content p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+/* Back link */
+.back-link {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.back-link a {
+  display: inline-block;
+  font-size: 1.1rem;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #4f46e5;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: #7e22ce;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.back-link a:hover {
+  background-color: #5d02b3;
+  color: #fff;
+}
+
+/* Responsive adjustments for the policy page */
+@media (max-width: 768px) {
+  .policy-page {
+    padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .policy-header h1 {
+    font-size: 2rem;
+  }
+  .policy-section {
+    padding: 25px;
+  }
+  .policy-section h2 {
+    font-size: 1.8rem;
+  }
+  .policy-content h4 {
+    font-size: 1.2rem;
+  }
+  .policy-content p {
+    font-size: 0.95rem;
+  }
+}

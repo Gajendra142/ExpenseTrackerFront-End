@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="CSS/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   </head>
   <body>
-
-    <!----------------- Navbar ------------>
 
     <nav class="nav-bar fade-in">
       <div class="nav-left">
@@ -20,13 +20,11 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#policy">Policy</a></li>
+          <li><a href="#contact">Contact</a></li>
           <button class="sign-up" onclick="window.location.href = 'auth.html'">Sign up</button>
         </ul>
       </div>
     </nav>
-
-    <!------------- Hero Section ---------------->
 
     <header class="hero" id="home">
       <div class="hero-container">
@@ -39,10 +37,8 @@
     <main>
       <div id="toast-container"></div>
 
-      <!------------------ Features Section ------------------>
-
       <h3 class="fade-in" id="features">Features</h3>
-      <section class="feature" id="feature">
+      <section class="feature">
         <div class="card fade-in">
           <h3>Track Expenses</h3>
           <p>Log your daily expenses with ease</p>
@@ -61,27 +57,22 @@
         </div>
       </section>
 
-      <!---------------- About Section ---------------->
-
-        <section class="about-section fade-in" id="about">
-          <h3 class="section-title">About</h3>
-          <div class="about">
-            <div class="about-left slide-left"></div>
-            <div class="about-right slide-right">
-              <p>
-                Our expense tracker is designed to make managing your finances
-                simple and stress-free. With an intuitive interface and powerful
-                insights, you can easily track spending, set budgets, and stay in
-                control of your money. Whether you’re saving for a goal or just want
-                a clearer view of your daily expenses, our tool helps you build
-                better financial habits with ease.
-              </p>
-            </div>
+      <section class="about-section fade-in" id="about">
+        <h3 class="section-title">About</h3>
+        <div class="about">
+          <div class="about-left slide-left"></div>
+          <div class="about-right slide-right">
+            <p>
+              Our expense tracker is designed to make managing your finances
+              simple and stress-free. With an intuitive interface and powerful
+              insights, you can easily track spending, set budgets, and stay in
+              control of your money. Whether you’re saving for a goal or just want
+              a clearer view of your daily expenses, our tool helps you build
+              better financial habits with ease.
+            </p>
           </div>
-        </section>
-
-
-      <!------------- Contact Section ------------>
+        </div>
+      </section>
 
       <h3 class="fade-in" id="contact">Contact US</h3>
       <section class="contact">
@@ -97,74 +88,83 @@
         <div class="contact-right slide-right">
           <form action="" class="contact-form" id="contactForm">
             <div class="input-box">
-              <input type="text" id="name" required>
-              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your Name" required />
               <small class="error" id="nameError"></small>
             </div>
-        
             <div class="input-box">
-              <input type="email" id="email" required>
-              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Your Email" required />
               <small class="error" id="emailError"></small>
             </div>
-        
             <div class="input-box">
-              <textarea name="msg" id="msg" required></textarea>
-              <label for="msg">Message</label>
+              <textarea name="msg" id="msg" placeholder="Message"></textarea>
               <small class="error" id="msgError"></small>
             </div>
-        
             <button type="submit" class="submit-btn">Submit</button>
             <p id="formMessage"></p>
           </form>
         </div>
       </section>
+
+      <section class="faq fade-in" id="faq">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-container">
+
+          <div class="faq-item">
+            <button class="faq-question">What is this Expense Tracker? <span class="arrow">&#9662;</span></button>
+            <div class="faq-answer">
+              <p>Our Expense Tracker helps you monitor your daily spending, set budgets, and gain insights into your financial habits with ease.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Is my data secure? <span class="arrow">&#9662;</span></button>
+            <div class="faq-answer">
+              <p>Yes! We prioritize your privacy. All your data is encrypted and securely stored using industry-standard protocols like JWT authentication and refresh tokens.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Can I use it on mobile devices? <span class="arrow">&#9662;</span></button>
+            <div class="faq-answer">
+              <p>Absolutely. The Expense Tracker is fully responsive and works seamlessly on mobile, tablet, and desktop.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Is it free to use? <span class="arrow">&#9662;</span></button>
+            <div class="faq-answer">
+              <p>Yes! You can start for free. We also provide premium features for advanced analytics and reporting.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">How do I add a new expense? <span class="arrow">&#9662;</span></button>
+            <div class="faq-answer">
+              <p>After logging in, simply navigate to the dashboard, click the "Add Expense" button, and fill in the details like amount, date, and category. It's that easy!</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Can I categorize my expenses? <span class="arrow">&#9662;</span></button>
+            <div class="faq-answer">
+              <p>Yes, our tracker lets you categorize expenses to get a clearer picture of your spending habits. You can create custom categories like food, travel, shopping, and more.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Do I need to download an app? <span class="arrow">&#9662;</span></button>
+            <div class="faq-answer">
+              <p>No download is required! Our web-based application works on any device with a modern browser. Simply log in and start tracking.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How can I view my spending reports? <span class="arrow">&#9662;</span></button>
+            <div class="faq-answer">
+              <p>Our dashboard provides powerful reporting tools, including charts and graphs. You can view your spending by category or month to understand where your money is going.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!--------------------- FAQ Section ------------------->
-
-
-<section class="faq fade-in" id="faq">
-  <h3>Frequently Asked Questions</h3>
-  <div class="faq-container">
-
-    <div class="faq-item">
-      <button class="faq-question">What is this Expense Tracker? <span class="arrow">&#9662;</span></button>
-      <div class="faq-answer">
-        <p>Our Expense Tracker helps you monitor your daily spending, set budgets, and gain insights into your financial habits with ease.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">Is my data secure? <span class="arrow">&#9662;</span></button>
-      <div class="faq-answer">
-        <p>Yes! We prioritize your privacy. All your data is encrypted and securely stored.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">Can I use it on mobile devices? <span class="arrow">&#9662;</span></button>
-      <div class="faq-answer">
-        <p>Absolutely. The Expense Tracker is fully responsive and works seamlessly on mobile, tablet, and desktop.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">Is it free to use? <span class="arrow">&#9662;</span></button>
-      <div class="faq-answer">
-        <p>Yes! You can start for free. We also provide premium features for advanced analytics and reporting.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-    <!-------------------- Footer Section ------------------>
     <footer>
       <div class="footer-container fade-in" id="footer">
         
-        <!----- Logo & Description ----->
         <div class="footer-logo">
           <h2>ExpenseTracker</h2>
           <p>Track your expenses, manage budgets, and gain insights into your spending habits effortlessly.</p>
@@ -175,8 +175,7 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-    
-        <!------ Quick Links ----->
+      
         <div class="footer-links">
           <h3>Quick Links</h3>
           <ul>
@@ -184,10 +183,11 @@
             <li><a href="#features">Features</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
           </ul>
         </div>
-    
-        <!----- Resources / Downloads ----->
+      
         <div class="footer-links">
           <h3>Resources</h3>
           <ul>
@@ -197,8 +197,7 @@
             <li><a href="#">App Downloads</a></li>
           </ul>
         </div>
-    
-        <!----- Newsletter & Contact ----->
+      
         <div>
           <h3>Stay Updated</h3>
           <p>Subscribe to our newsletter to get the latest updates.</p>
@@ -211,14 +210,13 @@
             <p>Phone: +1 (123) 456-7890</p>
           </div>
         </div>
-    
+      
       </div>
     
-      <!----- Footer Bottom ----->
       <div class="footer-bottom">
         &copy; 2025 ExpenseTracker. All rights reserved. | 
-        <a href="#">Privacy Policy</a> | 
-        <a href="#">Terms of Service</a>
+        <a href="privacy.html#privacy-policy">Privacy Policy</a> | 
+        <a href="privacy.html#terms-of-service">Terms of Service</a>
       </div>
     </footer>
 

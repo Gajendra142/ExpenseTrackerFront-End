@@ -64,8 +64,13 @@
             <div class="card"><h2>Total Income</h2><p id="total-income">₹0.00</p></div>
             <div class="card"><h2>Total Expenses</h2><p id="total-expenses">₹0.00</p></div>
           </div>
+          
           <div class="chart-container">
-            <h2>Monthly Spending & Categories</h2>
+            <h2>Monthly Spending</h2>
+            <div class="chart-controls">
+                <label for="chart-view-toggle">View by Category</label>
+                <input type="checkbox" id="chart-view-toggle">
+            </div>
             <canvas id="monthlyChart"></canvas>
           </div>
           <div class="recent-transactions">

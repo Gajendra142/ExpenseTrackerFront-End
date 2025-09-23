@@ -22,11 +22,12 @@
     z-index: 500;
 }
 
-.nav-left h2 {
+.nav-left h2 a{
     font-size: 1.8rem;
     font-weight: 500;
     color: #111;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .nav-right {
@@ -137,7 +138,7 @@
 }
 
 .container{
-    height: 100vh;
+    height: auto;
     width: 100%;
     display: flex;
     align-items: flex-end;
@@ -148,13 +149,13 @@
 
 .inner-container{
     height: auto;
-    width: 50%;
-    /* background: linear-gradient(135deg, #4f46e5,#9333ea); */
+    width: 55%;
     box-shadow: 0 0 50px 1px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    margin-top: 5%;
 }
 
 .inner-container-left{
@@ -176,13 +177,15 @@
 }
 
 .inner-container-right{
-    padding: 28px;
+    height: auto;
+    padding: 20px;
     display: flex;
     align-items: flex-start;   
     justify-content: center;
 }
 
 .inner-container-right form {
+    height: auto;
     width: 100%;
     max-width: 380px;          
     display: flex;
@@ -198,14 +201,14 @@
     font-size: 2.0rem;
     font-weight: 500;
     text-align: center;
-    margin-bottom: 6%;
+    margin-bottom: 0%;
     color: #000;
 }
 
 .inner-container-right .input-box{
     position: relative;
     width: 100%;
-    margin: 20px 0 2px 0;
+    margin: 13px 0 2px 0;
 }
 
 .input-box input{
@@ -219,15 +222,39 @@
     font-size: 0.95rem;
     background: rgba(255,255,255,0.95);
 }
+.input-box input:focus{
+  outline: none;
+  border-color: #2222;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.2);
+}
 
 .input-box label{
     position:absolute;
     transform: translateY(-110%);
     left: 2.5%;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: rgba(0,0,0,0.9);
 }
 
+.input-box button{
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    color: #4f46e5;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: -100px;
+}
+.input-box button:hover{
+    color: #fff;
+    background-color: #7e22ce;
+
+}
 .inner-container-right a{
     color: #000;
     transition: 0.3s;
@@ -574,9 +601,7 @@ footer p{
         margin-bottom: 2%;
         margin-top: -10%;
 }
-.container{
-    padding: 740px 0 0 0;
-}
+
 }
 
 /* Fade-in animation */
@@ -590,3 +615,5 @@ footer p{
   opacity: 1;
   transform: translateY(0);
 }
+
+

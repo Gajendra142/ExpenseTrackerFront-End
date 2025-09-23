@@ -17,14 +17,14 @@
     <!--------- nav-bar --------->
     <nav class="nav-bar fade-in">
       <div class="nav-left">
-        <h2>Expense Tracker</h2>
+        <h2><a href="index.html#home">Expense Tracker</a></h2>
       </div>
       <div class="nav-right">
         <ul class="nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Policy</a></li>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#feature">Features</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
           <button class="sign-up">Sign up</button>
         </ul>
       </div>
@@ -56,7 +56,7 @@
               <label for="login-password">Password</label>
               <span class="error-message" id="loginPasswordError"></span>
               <br />
-              <a href="#">Forget password?</a>
+              <a href="reset-password.html" id="forgot-password-link">Forgot Password?</a>
             </div>
             <button type="submit" class="login-btn">Login</button>
             <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
@@ -71,7 +71,7 @@
             </div>
           </form>
 
-          <!-- REGISTER FORM -->
+         <!-- REGISTER FORM -->
           <form action="" id="register-form" class="hidden">
             <h2>Register</h2>
             <div class="input-box">
@@ -83,20 +83,35 @@
               <input type="email" id="reg-email" required />
               <label for="reg-email">Email</label>
               <span class="error-message" id="regEmailError"></span>
+            </div>         
+            <div class="input-box">
+              <button type="button" id="send-otp-btn" class="otp-btn">Send OTP</button>
             </div>
+            <div class="input-box">
+              <input type="text" id="otp-input"  class="otp-input" />
+              <label for="otp-input">OTP</label>
+              <span class="error-message" id="otpError"></span>
+            </div>
+            <div class="input-box">
+              <button type="button" id="verify-otp-btn" class="otp-btn">Verify OTP</button>
+            </div>
+          
             <div class="input-box">
               <input type="password" id="reg-password" required />
               <label for="reg-password">Password</label>
               <span class="error-message" id="regPasswordError"></span>
             </div>
+
             <div class="input-box">
               <input type="password" id="reg-confirm-password" required />
               <label for="reg-confirm-password">Confirm Password</label>
               <span class="error-message" id="regConfirmError"></span>
             </div>
+          
             <button type="submit" class="login-btn">Register</button>
             <p>Already have an account? <a href="#" id="show-login">Login</a></p>
           </form>
+
         </div>
       </div>
     </div>
@@ -121,10 +136,10 @@
         <div class="footer-links">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#feature">Features</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="privacy.html">Policy</a></li>
           </ul>
         </div>
     
@@ -134,7 +149,7 @@
           <ul>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Help Center</a></li>
-            <li><a href="#">FAQs</a></li>
+            <li><a href="index.html#faq">FAQs</a></li>
             <li><a href="#">App Downloads</a></li>
           </ul>
         </div>
