@@ -24,7 +24,7 @@
 
 .nav-left h2 a{
     font-size: 1.8rem;
-    font-weight: 500;
+    font-weight: 550;
     color: #111;
     cursor: pointer;
     text-decoration: none;
@@ -155,7 +155,7 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    margin-top: 5%;
+    margin-top: 5%;    
 }
 
 .inner-container-left{

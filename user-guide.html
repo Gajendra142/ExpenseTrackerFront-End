@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide - Expense Tracker</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="CSS/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <nav class="nav-bar">
+    <div class="nav-left">
+      <h2><a href="index.html">Expense Tracker</a></h2>
+    </div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="#" onclick="redirectDashboard()">Dashboard</a></li> 
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <button class="sign-up" onclick="window.location.href = 'auth.html'">Sign up</button>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="user-guide-page">
+    <header class="guide-header">
+      <h1>User Guide</h1>
+      <p>Learn how to navigate and use the Expense Tracker effectively.</p>
+    </header>
+
+    <section class="guide-section">
+      <h2>1. Getting Started</h2>
+      <ul>
+        <li>Sign up using your email and create a secure password.</li>
+        <li>Log in to access your personal dashboard.</li>
+        <li>Your account is secured with <strong>JWT authentication</strong> and <strong>refresh tokens</strong>.</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2>2. Adding Expenses</h2>
+      <ol>
+        <li>Go to your <strong>Dashboard</strong>.</li>
+        <li>Click the <strong>"Add Expense"</strong>  in the side bar.</li>
+        <li>Fill in the details: <em>amount, date, category, and description</em>.</li>
+        <li>Click <strong>Add Expense</strong> button to record your expense.</li>
+      </ol>
+    </section>
+
+    <section class="guide-section">
+      <h2>8. Smart Categorization</h2>
+      <ul>
+        <li>Create clear and meaningful categories for your expenses, such as Food, Travel, Shopping, Bills, etc.</li>
+        <li>Select catergory <b>"Income"</b> to add amount to you income section. Otherwise Your expenses will cause you a negative "Total balance"</li>
+        <li>Use consistent naming for categories to easily track spending trends.</li>
+        <li>Avoid too many categories; group small or irregular expenses under “Miscellaneous” to keep reporting simple.</li>
+        <li>Regularly review your categories and adjust them to match your spending habits for better insights.</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2>3. Viewing Reports</h2>
+      <ul>
+        <li>Navigate to the <strong>Reports</strong> section.</li>
+        <li>View your expenses by category or by month.</li>
+        <li>Analyze your spending habits through charts and graphs.</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2>4. Filtering Expenses</h2>
+      <ul>
+        <li>Use the <strong>Filter</strong> option to search expenses by date, category, or amount.</li>
+        <li>This helps you quickly find specific transactions and monitor spending trends.</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2>5. Managing Your Profile</h2>
+      <ul>
+        <li>Access the <strong>Profile</strong> section from your dashboard.</li>
+        <li>Update your <strong>name, email, and password</strong> as needed.</li>
+        <li>Ensure your email is valid to receive notifications and password resets.</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2>6. Security Tips</h2>
+      <ul>
+        <li>Never share your password with anyone.</li>
+        <li>Log out after using the Expense Tracker on public devices.</li>
+        <li>Regularly update your password for better security.</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2>7. Support & Feedback</h2>
+      <ul>
+        <li>If you encounter issues, use the <strong>Contact Us</strong> section on the homepage to send your queries.</li>
+        <li>We aim to respond to all queries promptly.</li>
+      </ul>
+    </section>
+
+    <div class="back-link">
+      <a href="index.html">← Back to Homepage</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>ExpenseTracker</h2>
+        <p>Track your expenses, manage budgets, and gain insights into your spending habits effortlessly.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="index.html#faq">FAQs</a></li>
+          <li><a href="index.html#why-us">Why Choose Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">App Downloads</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Stay Updated</h3>
+        <p>Subscribe to our newsletter to get the latest updates.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="contact-info">
+          <p>Email: expensetracker2807@gmail.com</p>
+          <p>Phone: +91 (123) 456-7890</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 ExpenseTracker. All rights reserved. | 
+      <a href="privacy.html#privacy-policy">Privacy Policy</a> | 
+      <a href="privacy.html#terms-of-service">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script src="JS/script.js"></script>
+</body>
+</html>

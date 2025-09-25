@@ -1,4 +1,4 @@
-// script.js
+
 // ================== Toast Notification ==================
 const toastContainer = document.getElementById('toast-container');
 let currentToast = null;
@@ -55,31 +55,15 @@ function clearTokens() {
     localStorage.removeItem("refreshToken");
 }
 
-// Refresh token
-async function refreshAccessToken() {
-    const refreshToken = getRefreshToken();
-    if (!refreshToken) return null;
+// =============== redirecting to dashboard after authorization ============
 
-    try {
-        const res = await fetch("http://localhost:8080/auth/refresh", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ refreshToken }),
-        });
-
-        if (res.ok) {
-            const data = await res.json();
-            saveTokens(data);
-            return data.accessToken;
-        } else {
-            clearTokens();
-            return null;
-        }
-    } catch (err) {
-        console.error("Refresh failed:", err);
-        clearTokens();
-        return null;
-    }
+function redirectDashboard(){
+    const accessToken = getAccessToken();
+    if(!accessToken){
+        window.location.href = "auth.html";
+        return;
+    }
+    window.location.href = "dashboard.html";
 }
 
 async function getValidAccessToken() {
@@ -104,8 +88,8 @@ async function getValidAccessToken() {
 }
 
 // ================== Navbar Auth Button ==================
-const authBtn = document.querySelector(".sign-up");
 
+const authBtn = document.querySelector(".sign-up");
 async function updateNavbarAuthState() {
     const token = await getValidAccessToken();
 
@@ -117,6 +101,8 @@ async function updateNavbarAuthState() {
         authBtn.onclick = () => window.location.href = "auth.html";
     }
 }
+
+// ============== handling logout =============
 
 async function handleLogout() {
     const refreshToken = getRefreshToken();
@@ -274,7 +260,7 @@ newsletterForm.addEventListener("submit", async (e) => {
     notify("Subscribing...", "loading");
 
     try {
-        const response = await fetch("https://your-backend-api.com/newsletter", {
+        const response = await fetch("https://backend-api.com/newsletter", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email })
@@ -316,4 +302,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.2 });
 
     elements.forEach(el => observer.observe(el));
+});
+
+// ================= Hero Text Character Animation =================
+window.addEventListener("load", () => {
+  const heroHeading = document.querySelector(".hero-container h2");
+  const heroParagraph = document.querySelector(".hero-container p");
+
+  // Function to split text into spans (per character, keeping spaces)
+  function splitText(element) {
+    const text = element.innerText;
+    element.innerHTML = "";
+    text.split("").forEach((char) => {
+      const span = document.createElement("span");
+      span.textContent = char === " " ? "\u00A0" : char; // keep spaces
+      span.style.display = "inline-block";
+      span.style.opacity = 0;
+      element.appendChild(span);
+    });
+    return element.querySelectorAll("span");
+  }
+
+  const headingChars = splitText(heroHeading);
+  const paragraphChars = splitText(heroParagraph);
+
+  // Animate heading characters
+  gsap.fromTo(
+    headingChars,
+    { opacity: 0, y: 30 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.05,
+      stagger: 0.05,
+      ease: "power2.out",
+      delay: 0.2
+    }
+  );
+
+  // Animate paragraph characters (slightly delayed after heading)
+  gsap.fromTo(
+    paragraphChars,
+    { opacity: 0, y: 20 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.04,
+      stagger: 0.02,
+      ease: "power2.out",
+      delay: 1.2
+    }
+  );
 });

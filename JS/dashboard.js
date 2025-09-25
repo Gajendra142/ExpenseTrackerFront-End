@@ -79,10 +79,25 @@ updateAuthButton();
 
 // =================== Token Refresh Logic ===================
 
+let isRefreshing = false;
+let failedRefreshPromise = null;
+
 async function refreshAccessToken() {
+  if (isRefreshing) {
+    if (failedRefreshPromise) {
+      return await failedRefreshPromise;
+    }
+    await new Promise(resolve => setTimeout(resolve, 50));
+    return await refreshAccessToken();
+  }
+
+  isRefreshing = true;
+  failedRefreshPromise = null;
   const refreshToken = localStorage.getItem("refreshToken");
+
   if (!refreshToken) {
     console.error("No refresh token found.");
+    isRefreshing = false;
     return false;
   }
 
@@ -99,17 +114,25 @@ async function refreshAccessToken() {
 
     if (!res.ok) {
       console.error("Failed to refresh token:", res.status, res.statusText);
+      isRefreshing = false;
+      failedRefreshPromise = Promise.resolve(false);
       return false;
     }
 
     const data = await res.json();
-    if (data.accessToken) {
-      localStorage.setItem("accessToken", data.accessToken);
+    console.log("Refresh response:", data);
+
+    if (data.newAccessToken) {
+      localStorage.setItem("accessToken", data.newAccessToken);
+      isRefreshing = false;
       return true;
     }
+    isRefreshing = false;
     return false;
   } catch (err) {
     console.error("Error refreshing token:", err);
+    isRefreshing = false;
+    failedRefreshPromise = Promise.resolve(false);
     return false;
   }
 }
@@ -306,7 +329,7 @@ function renderExpenses() {
         </div>
       </form>
       <div id="expense-list">
-        <p>[Expenses List Loading...]</p>
+        <p>Expenses List Loading...</p>
       </div>
     </section>
   `;
@@ -825,7 +848,6 @@ async function loadSummary() {
     notify(err.message, "error");
   }
 }
-
 // =================== TRANSACTIONS ===================
 let currentPage = 0;
 let sortField = "expenseDate";
@@ -835,7 +857,7 @@ let searchQuery = "";
 async function loadTransactions() {
   try {
     const res = await fetchWithAuth(
-      `http://localhost:8080/api/expenses/filter?page=${currentPage}&size=5&sort=${sortField},${sortDir}&search=${searchQuery}`
+      `http://localhost:8080/api/expenses/filter?page=${currentPage}&size=10&sort=${sortField},${sortDir}&search=${searchQuery}`
     );
     if (!res.ok) throw new Error("Failed to fetch transactions");
     const data = await res.json();

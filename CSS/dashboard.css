@@ -5,6 +5,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+html::selection{
+  color: #fff;
+  background-color: #7e22ce;
+}
 /* ========= Navbar ========= */
 .nav-bar {
   height: 90px;
@@ -21,9 +25,10 @@
   z-index: 500;
 }
 
-.nav-left h2 {
+.nav-left h2 a{
+  text-decoration: none;
   font-size: 1.8rem;
-  font-weight: 500;
+  font-weight: 550;
   color: #111;
   cursor: pointer;
 }
@@ -283,14 +288,17 @@
 }
 .side-nav li {
   list-style: none;
+}
+.side-nav li a{
   color: #111;
   font-size: 1.2rem;
   font-weight: 500;
+  text-decoration: none;
   transition: 0.2s;
   cursor: pointer;
 }
 
-.side-nav li:hover {
+.side-nav li a:hover {
   color: #fffafe;
 }
 

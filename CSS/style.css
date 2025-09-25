@@ -101,7 +101,7 @@ html{
 
 .nav-left h2  a{
     font-size: 1.8rem;
-    font-weight: 500;
+    font-weight: 550;
     color: #111;
     cursor: pointer;
     text-decoration: none;
@@ -183,6 +183,7 @@ html{
     height: 45px;
     width: 160px;
     background: #fff;
+    color: #7e22ce;
     outline: non;
     border: none;
     border-radius: 7px;
@@ -232,6 +233,11 @@ main h3{
     border-radius: 10px;
     transition: 0.3s;    
 }
+.card i {
+    font-size: 1.9rem;
+    color: #7e22ce;
+    margin-bottom: -10px;
+}
 .card:hover{
     transform: scale(1.02);
 }
@@ -249,6 +255,7 @@ main h3{
 .about-section {
   margin-top: 5%;
   text-align: center;
+  height: auto;
 }
 
 .about-section .section-title {
@@ -257,7 +264,7 @@ main h3{
 }
 
 main .about {
-  height: 350px;
+  height: 385px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -279,7 +286,7 @@ main .about .about-right {
   font-size: 1.3rem;
   font-weight: 100;
   padding: 30px;
-  background-color: #fffcf9;
+  background-color: #faf9f8;
 }
 
 /* Responsive stacking */
@@ -293,7 +300,74 @@ main .about .about-right {
     margin-bottom: 2rem;
   }
 }
+/* ============ Why Choose Us Section ============= */
+.why-us {
+  padding: 60px 28px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
 
+.why-us-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.why-us-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.why-us-item i {
+  font-size: 2rem;
+  color: #7e22ce;
+  margin-bottom: 15px;
+}
+
+.why-us-item h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.why-us-item p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* Ensure consistent section title styling */
+#why-us {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+/* Responsive adjustments for the new section */
+@media (max-width: 768px) {
+  .why-us {
+    grid-template-columns: 1fr;
+    padding: 40px 15px;
+  }
+
+  .why-us-item h4 {
+    font-size: 1.2rem;
+  }
+
+  .why-us-item p {
+    font-size: 0.9rem;
+  }
+}
 /* =========== Contact Section ============== */
 
 main .contact{
@@ -413,7 +487,7 @@ main .contact .contact-right{
 /* FAQ Section */
 .faq {
   padding: 60px 28px;
-  background: #fffcf9;
+  background: #fff;
   text-align: center;
 }
 
@@ -435,7 +509,7 @@ main .contact .contact-right{
 .faq-item {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   overflow: hidden;
   transition: transform 0.3s;
 }
@@ -684,6 +758,7 @@ footer p{
         align-items: center;          
         width: 100%;
         gap: 8px;
+        height: 40px;
     }
     
     .nav-right .nav-links .sign-up{
@@ -785,10 +860,11 @@ footer p{
 }
 
     .hero-container h2 {
-        font-size: 1.6rem;
+        font-size: 1.9rem;
+        padding: -10px;
     }
     .hero-container p {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
     .hero-container .get-started {
         width: 120px;
@@ -822,8 +898,6 @@ footer p{
 
 
 /* contact left responsive css */
-
-/* ===== Responsive Styles ===== */
 @media(max-width: 1024px) {
     .contact-left {
         padding: 18px;
@@ -881,7 +955,6 @@ footer p{
 
 /* ============= Animaitons for the web page============== */
 
-/* ========= Reusable Animation Classes ========= */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -939,9 +1012,8 @@ html, body {
 
 /* ==================== Privacy and Terms Page Styles ==================== */
 
-/* Specific body style for the policy page to prevent large gaps */
 .policy-page {
-  padding-top: 120px; /* Adjust based on navbar height to prevent content from hiding */
+  padding-top: 120px; 
   padding-bottom: 50px;
   background-color: #f9f9f9;
   min-height: 100vh;
@@ -1046,4 +1118,107 @@ html, body {
   .policy-content p {
     font-size: 0.95rem;
   }
+}
+
+/* ==================== User Guide Page Styles ==================== */
+
+.user-guide-page {
+    padding-top: 120px;
+    padding-bottom: 50px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+.user-guide-page header{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-guide-page header h1 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #7e22ce;
+    margin-bottom: 10px;
+}
+
+.user-guide-page header p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.guide-section {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    background: #fff;
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    line-height: 1.6;
+}
+
+.guide-section h2 {
+    font-size: 2rem;
+    color: #4f46e5;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+}
+
+.guide-section ul {
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+.guide-section li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.guide-section li::marker {
+    color: #7e22ce;
+    font-weight: bold;
+}
+
+/* Back link */
+.user-guide-back {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.user-guide-back a {
+    display: inline-block;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #4f46e5;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: #7e22ce;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.user-guide-back a:hover {
+    background-color: #5d02b3;
+    color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .user-guide-page {
+        padding-top: 100px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .user-guide-header h1 {
+        font-size: 2rem;
+    }
+    .guide-section {
+        padding: 25px;
+    }
+    .guide-section h2 {
+        font-size: 1.8rem;
+    }
+    .guide-section li {
+        font-size: 0.95rem;
+    }
 }
