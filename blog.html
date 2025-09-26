@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Read the latest articles, tips, and insights on managing your expenses effectively.">
+  <title>Blog - Expense Tracker</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/style.css" />
+</head>
+<body>
+  <nav class="nav-bar">
+    <div class="nav-left">
+      <h2><a href="index.html">Expense Tracker</a></h2>
+    </div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="#" onclick="redirectDashboard()">Dashboard</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <button class="sign-up" onclick="window.location.href='auth.html'">Sign up</button>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero blog-hero">
+    <div class="hero-container">
+      <h2>Expense Tracker Blog</h2>
+      <p>Insights, tips, and updates to help you manage your finances effectively.</p>
+    </div>
+  </header>
+
+  <main class="blog-main">
+    <section class="featured-post">
+      <div class="featured-card">
+        <img src="img/ET-blog.webp" alt="Featured Blog" />
+        <div class="featured-content">
+          <h3>Master Your Budget in 5 Simple Steps</h3>
+          <p>Learn how to take control of your finances with our easy-to-follow budgeting guide.</p>
+          <button onclick="window.location.href='blog-post.html'">Read More</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-list">
+      <article class="blog-card">
+        <img src="img/ET-tips.webp" alt="Blog 1" />
+        <div class="blog-content">
+          <h4>Top 10 Expense Tracking Tips</h4>
+          <p>Analyze your financial habits to make smarter decisions and save more effectively.</p>
+          <span class="blog-date">Sept 25, 2025</span>
+          <button onclick="window.location.href='blog-post1.html'">Read More</button>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="img/ET-save-money.jpg" alt="Blog 2" />
+        <div class="blog-content">
+          <h4>How to Save Money on Everyday Expenses</h4>
+          <p>Simple strategies to reduce your daily spending without compromising your lifestyle.</p>
+          <span class="blog-date">Sept 20, 2025</span>
+          <button onclick="window.location.href='blog-post2.html'">Read More</button>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="img/ET-spending-habits.jpg" alt="Blog 3" />
+        <div class="blog-content">
+          <h4>Understanding Your Spending Habits</h4>
+          <p>Analyze your financial habits to make smarter decisions and save more effectively.</p>
+          <span class="blog-date">Sept 15, 2025</span>
+          <button onclick="window.location.href='blog-post3.html'">Read More</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container    ">
+      <div class="footer-logo">
+        <h2>ExpenseTracker</h2>
+        <p>Track your expenses, manage budgets, and gain insights into your spending habits effortlessly.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="index.html#faq">FAQs</a></li>
+          <li><a href="index.html#why-us">Why Choose Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="help-center.html">Help Center</a></li>
+          <li><a href="#">App Downloads</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Stay Updated</h3>
+        <p>Subscribe to our newsletter to get the latest updates.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="contact-info">
+          <p>Email: expensetracker2807@gmail.com</p>
+          <p>Phone: +91 (123) 456-7890</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 ExpenseTracker. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="JS/script.js"></script>
+</body>
+</html>

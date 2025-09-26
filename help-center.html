@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help Center - Expense Tracker</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ===== Navigation Bar ===== -->
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <h2><a href="index.html">Expense Tracker</a></h2>
+      </div>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="#" onclick="redirectDashboard()">Dashboard</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <button class="sign-up" onclick="window.location.href = 'auth.html'">
+            Sign up
+          </button>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ===== Hero Section ===== -->
+    <header class="hero help-hero">
+      <div class="hero-container">
+        <h2>Welcome to the Help Center</h2>
+        <p>
+          Find answers to your questions and get support for Expense Tracker.
+        </p>
+        <div class="help-search">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for help..."
+          />
+          <select id="searchFilter">
+            <option value="all">All Categories</option>
+            <option value="account">Account</option>
+            <option value="expenses">Expenses</option>
+            <option value="reports">Reports</option>
+            <option value="security">Security</option>
+            <option value="settings">Settings</option>
+          </select>
+          <button id="searchBtn"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="help-main">
+      <!-- ===== Sidebar Categories ===== -->
+      <!-- <aside class="help-sidebar">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#account">Account & Profile</a></li>
+          <li><a href="#expenses">Expenses</a></li>
+          <li><a href="#reports">Reports</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#settings">Settings</a></li>
+        </ul>
+      </aside> -->
+
+      <!-- ===== FAQ Sections ===== -->
+<section class="help-content">
+  <!-- Account Section -->
+  <div class="help-section" id="account">
+    <h3>Account & Profile</h3>
+    <p>Manage your login, profile, and account settings efficiently.</p>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I register for a new account? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Click on the <b>"Sign Up"</b> button on the homepage. Enter your name, email, verify it, enter password, 
+        then confirm your password and submit. You’ll be redirected to the login page once registration is complete.
+        after logging in you'll be redirected to the dashboard.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        I didn’t receive my account verification email. What should I do? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        First, check your spam/junk folder. If the email isn’t there, click on 
+        <b>“Resend Verification Email”</b> at the login screen. If the problem persists, 
+        please contact our support team.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I reset my password? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Click on <b>"Forgot Password"</b> while logging in. Enter your registered email, 
+        and you’ll receive a reset password link. Follow the instructions to set a new password.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I update my profile information?
+        <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Go to your <b>"Dashboard"</b>, click on <b>"Settings"</b> in the sidebar, 
+        update your information, and click <b>"Save Settings"</b>. Your profile will be updated instantly.
+      </div>
+    </div>
+  </div>
+
+  <!-- Expenses Section -->
+  <div class="help-section" id="expenses">
+    <h3>Expenses</h3>
+    <p>Track, categorize, and manage your expenses.</p>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I add a new expense? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Click <b>"Add Expense"</b> in the sidebar. Fill in the details such as category, amount, 
+        and date, then click <b>"Save"</b>. The expense will appear in your dashboard immediately.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I edit or delete an expense? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Currently, expenses are read-only. Editing and deleting will be available in upcoming updates.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Why am I seeing a negative total balance? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        This happens when you add expenses without adding income. 
+        Make sure to add both income and expenses for accurate balance tracking. 
+        See the <a href="user-guide.html">User Guide</a> for more details.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I categorize my expenses? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        While adding an expense, select the appropriate <b>Category</b> 
+        (e.g., Food, Travel, Shopping). Categorizing helps generate more accurate reports.
+      </div>
+    </div>
+  </div>
+
+  <!-- Reports Section -->
+  <div class="help-section" id="reports">
+    <h3>Reports</h3>
+    <p>Analyze your financial insights and track spending trends.</p>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I view monthly reports? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Monthly reports are available on your dashboard under the <b>"Reports"</b> section. 
+        You can view charts and graphs of your income and expenses.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I view category-wise reports? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Yes, go to the <b>"Reports"</b> tab and use the category filter 
+        to view how much you’ve spent on Food, Travel, Shopping, and other categories.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I export my reports? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Currently, exporting reports is not supported. This feature will be added in a future update.
+      </div>
+    </div>
+  </div>
+
+  <!-- Security Section -->
+  <div class="help-section" id="security">
+    <h3>Security</h3>
+    <p>Keep your account safe with best practices.</p>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What should I do if I forgot my password? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Use the <b>"Forgot Password"</b> option on the login screen to reset your password securely.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What should I do if my account is compromised? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Immediately reset your password and contact support through the <b>Contact Us</b> page.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How can I keep my account secure? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Always use a strong password, never share your login details, 
+        and log out when using public devices.
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Section -->
+  <div class="help-section" id="settings">
+    <h3>Settings</h3>
+    <p>Customize your Expense Tracker experience.</p>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I change my account settings? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Navigate to the <b>"Settings"</b> tab in your dashboard sidebar. 
+        You can update account details like name, email, or profile picture from there.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I switch themes? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Currently, theme switching is not available. A dark mode option will be added in the future.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I deactivate or delete my account? <span class="arrow">&#9662;</span>
+      </button>
+      <div class="faq-answer">
+        Please contact support if you wish to deactivate or permanently delete your account. 
+        This option will be provided in the settings soon.
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+
+    <!-- ===== Contact Support Section ===== -->
+    <section class="contact-support">
+      <h3>Still Need Help?</h3>
+      <p>If you can’t find your answer, our support team is here for you.</p>
+      <button onclick="window.location.href='index.html#contact'">
+        Contact Support
+      </button>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <h2>ExpenseTracker</h2>
+          <p>Track your expenses, manage budgets, and gain insights into your spending habits effortlessly.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="index.html#faq">FAQs</a></li>
+          <li><a href="index.html#why-us">Why Choose Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="index.html#faq">FAQs</a></li>
+            <li><a href="#">App Downloads</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Stay Updated</h3>
+          <p>Subscribe to our newsletter to get the latest updates.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="contact-info">
+            <p>Email: expensetracker2807@gmail.com</p>
+            <p>Phone: +91 (123) 456-7890</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 ExpenseTracker. All rights reserved. | 
+        <a href="privacy.html">Privacy Policy</a> | 
+        <a href="privacy.html#terms-of-service">Terms of Service</a>
+      </div>
+    </footer>
+    <script src="JS/help.js"></script>
+    <script src="JS/script.js"></script>
+  </body>
+</html>

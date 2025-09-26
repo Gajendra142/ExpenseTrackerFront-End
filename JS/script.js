@@ -305,6 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ================= Hero Text Character Animation =================
+
 window.addEventListener("load", () => {
   const heroHeading = document.querySelector(".hero-container h2");
   const heroParagraph = document.querySelector(".hero-container p");
@@ -353,4 +354,23 @@ window.addEventListener("load", () => {
       delay: 1.2
     }
   );
+});
+
+// ============ FAQ Accordion Toggle in help-center.html ============
+
+
+// Live FAQ Search
+const searchInput = document.querySelector(".help-search input");
+searchInput.addEventListener("input", () => {
+  const filter = searchInput.value.toLowerCase();
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach((item) => {
+    const question = item.querySelector(".faq-question").textContent.toLowerCase();
+    if (question.includes(filter)) {
+      item.style.display = "";
+    } else {
+      item.style.display = "none";
+    }
+  });
 });
