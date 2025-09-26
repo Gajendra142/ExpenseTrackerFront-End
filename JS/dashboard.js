@@ -57,7 +57,7 @@ function handleLogout() {
   const refreshToken = localStorage.getItem("refreshToken");
   notify("Logging out...", "loading");
 
-  fetch("http://localhost:8080/auth/logout", {
+  fetch("https://expensetrackrio.up.railway.app/auth/logout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -102,7 +102,7 @@ async function refreshAccessToken() {
   }
 
   try {
-    const res = await fetch("http://localhost:8080/auth/refresh", {
+    const res = await fetch("https://expensetrackrio.up.railway.app/auth/refresh", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -350,7 +350,7 @@ function renderExpenses() {
       notify("Adding expense...", "loading");
 
       try {
-        const res = await fetchWithAuth("http://localhost:8080/api/expenses", {
+        const res = await fetchWithAuth("https://expensetrackrio.up.railway.app/api/expenses", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -374,7 +374,7 @@ function renderExpenses() {
 async function loadExpenseList() {
   try {
     const res = await fetchWithAuth(
-      "http://localhost:8080/api/expenses/filter?page=0&size=5"
+      "https://expensetrackrio.up.railway.app/api/expenses/filter?page=0&size=5"
     );
 
     if (!res.ok) throw new Error("Failed to load expenses");
@@ -441,7 +441,7 @@ async function renderReports() {
 async function loadCategoryChart() {
   try {
     const res = await fetchWithAuth(
-      "http://localhost:8080/api/reports/expenses-by-category"
+      "https://expensetrackrio.up.railway.app/api/reports/expenses-by-category"
     );
     if (!res.ok) throw new Error("Failed to load category data");
     const data = await res.json();
@@ -494,7 +494,7 @@ async function loadCategoryChart() {
 async function loadMonthlyChart() {
   try {
     const res = await fetchWithAuth(
-      "http://localhost:8080/api/reports/monthly-expenses"
+      "https://expensetrackrio.up.railway.app/api/reports/monthly-expenses"
     );
     if (!res.ok) throw new Error("Failed to load monthly data");
     const data = await res.json();
@@ -528,7 +528,7 @@ async function loadMonthlyChart() {
 async function loadMonthlyCategoryChart() {
   try {
     const res = await fetchWithAuth(
-      "http://localhost:8080/api/reports/monthly-expenses-by-category"
+      "https://expensetrackrio.up.railway.app/api/reports/monthly-expenses-by-category"
     );
     if (!res.ok) throw new Error("Failed to load category data");
     const data = await res.json();
@@ -654,7 +654,7 @@ function renderCategories() {
 
 async function loadCategoryList() {
   try {
-    const res = await fetchWithAuth("http://localhost:8080/api/categories");
+    const res = await fetchWithAuth("https://expensetrackrio.up.railway.app/api/categories");
     if (!res.ok) throw new Error("Failed to load categories");
     const categories = await res.json();
     const categoryList = document.getElementById("category-list");
@@ -740,7 +740,7 @@ async function renderSettings() {
 
     try {
       const res = await fetchWithAuth(
-        "http://localhost:8080/api/users/profile", {
+        "https://expensetrackrio.up.railway.app/api/users/profile", {
           method: "PUT",
           body: formData,
         }
@@ -768,7 +768,7 @@ function validateEmail(email) {
 
 async function loadSettingsForm() {
   try {
-    const res = await fetchWithAuth("http://localhost:8080/api/users/profile");
+    const res = await fetchWithAuth("https://expensetrackrio.up.railway.app/api/users/profile");
     if (!res.ok) throw new Error("Failed to load user profile.");
     const userInfo = await res.json();
     const form = document.getElementById("settings-form");
@@ -821,7 +821,7 @@ async function loadUserProfile() {
   }
 
   try {
-    const res = await fetchWithAuth("http://localhost:8080/api/users/profile");
+    const res = await fetchWithAuth("https://expensetrackrio.up.railway.app/api/users/profile");
     if (!res.ok) {
       console.error("Failed to load user profile. Token might be invalid.");
       return;
@@ -837,7 +837,7 @@ async function loadUserProfile() {
 async function loadSummary() {
   try {
     const res = await fetchWithAuth(
-      "http://localhost:8080/api/expenses/summary"
+      "https://expensetrackrio.up.railway.app/api/expenses/summary"
     );
     if (!res.ok) throw new Error("Failed to fetch summary");
     const data = await res.json();
@@ -857,7 +857,7 @@ let searchQuery = "";
 async function loadTransactions() {
   try {
     const res = await fetchWithAuth(
-      `http://localhost:8080/api/expenses/filter?page=${currentPage}&size=10&sort=${sortField},${sortDir}&search=${searchQuery}`
+      `https://expensetrackrio.up.railway.app/api/expenses/filter?page=${currentPage}&size=10&sort=${sortField},${sortDir}&search=${searchQuery}`
     );
     if (!res.ok) throw new Error("Failed to fetch transactions");
     const data = await res.json();

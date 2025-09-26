@@ -123,7 +123,7 @@ async function handleLogout() {
 
   try {
     if (refreshToken) {
-      const res = await fetch("http://localhost:8080/auth/logout", {
+      const res = await fetch("https://expensetrackrio.up.railway.app/auth/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -183,7 +183,7 @@ async function refreshAccessToken() {
   if (!refreshToken) return null;
 
   try {
-    const res = await fetch("http://localhost:8080/auth/refresh", {
+    const res = await fetch("https://expensetrackrio.up.railway.app/auth/refresh", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refreshToken }),
@@ -307,7 +307,7 @@ if (loginForm) {
     notify("Logging in...", "loading");
 
     try {
-      const res = await fetch("http://localhost:8080/auth/login", {
+      const res = await fetch("https://expensetrackrio.up.railway.app/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginData),
@@ -435,7 +435,7 @@ if (sendOtpBtn) {
     sendOtpBtn.textContent = "Sending...";
 
     try {
-      const response = await fetch("http://localhost:8080/auth/send-otp", {
+      const response = await fetch("https://expensetrackrio.up.railway.app/auth/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
@@ -477,7 +477,7 @@ if (verifyOtpBtn) {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/auth/verify-otp", {
+      const response = await fetch("https://expensetrackrio.up.railway.app/auth/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, otp })
@@ -524,7 +524,7 @@ if (registerForm) {
     notify("Registering...", "loading");
 
     try {
-      const res = await fetch("http://localhost:8080/auth/register", {
+      const res = await fetch("https://expensetrackrio.up.railway.app/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -620,7 +620,7 @@ if (forgotPasswordForm) {
         notify("Sending reset link...", "loading");
 
         try {
-            const res = await fetch("http://localhost:8080/auth/forgot-password", {
+            const res = await fetch("https://expensetrackrio.up.railway.app/auth/forgot-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: forgotEmailInput.value.trim() }),
@@ -675,11 +675,10 @@ if (resetForm) {
             notify("Invalid or missing token.", "error");
             return;
         }
-
         notify("Resetting password...", "loading");
 
         try {
-            const res = await fetch("http://localhost:8080/auth/reset-password", {
+            const res = await fetch("https://expensetrackrio.up.railway.app/auth/reset-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token, newPassword: password }),

@@ -110,7 +110,7 @@ async function handleLogout() {
 
     try {
         if (refreshToken) {
-            await fetch("http://localhost:8080/auth/logout", {
+            await fetch("https://expensetrackrio.up.railway.app/auth/logout", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ refreshToken }),
@@ -221,7 +221,7 @@ contactForm.addEventListener("submit", async (e) => {
     notify("Submitting form...", "loading");
 
     try {
-        const response = await fetch("http://localhost:8080/api/contacts", {
+        const response = await fetch("https://expensetrackrio.up.railway.app/api/contacts", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
