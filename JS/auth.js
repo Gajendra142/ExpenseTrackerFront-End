@@ -443,7 +443,7 @@ if (sendOtpBtn) {
 
       if (response.ok) {
         notify("OTP sent successfully! Please check your email.", "success");
-        alert("Please check your spam folder as well, if not in your email inbox");
+        notify("Please check your spam folder, if did not recieve the mail in inbox","success");
         const otpSection = document.getElementById("otp-section");
         if (otpSection) {
           otpSection.classList.remove("hidden");
@@ -628,8 +628,8 @@ if (forgotPasswordForm) {
             });
 
             if (res.ok) {
-                notify("Reset link sent! Check your email.", "success");
-                alert("please check your spam folder as well, if not recieve the reset-link to your inbox");
+                notify("Reset link sent! Check your email", "success");
+                notify("please check spam folder, if did not recieve the mail in inbox", "success");
                 forgotPasswordForm.reset();
             } else {
                 const err = await res.text();
