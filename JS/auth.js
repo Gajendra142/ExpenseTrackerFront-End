@@ -18,7 +18,337 @@ if (showLogin) {
     e.preventDefault();
     registerForm.classList.add("hidden");
     loginForm.classList.remove("hidden");
-  });
+  });// ================== Toggle Login & Register ==================
+
+const loginForm = document.getElementById("login-form");
+const registerForm = document.getElementById("register-form");
+const showRegister = document.getElementById("show-register");
+const showLogin = document.getElementById("show-login");
+
+if (showRegister) {
+  showRegister.addEventListener("click", (e) => {
+    e.preventDefault();
+    loginForm.classList.add("hidden");
+    registerForm.classList.remove("hidden");
+  });
+}
+
+if (showLogin) {
+  showLogin.addEventListener("click", (e) => {
+    e.preventDefault();
+    registerForm.classList.add("hidden");
+    loginForm.classList.remove("hidden");
+  });
+}
+
+function switchToLoginAfterRegister() {
+  if (registerForm && loginForm) {
+    registerForm.reset();
+    registerForm.classList.add("hidden");
+    loginForm.classList.remove("hidden");
+  }
+}
+
+// ================== Toast Notification Logic ==================
+
+const toastContainer = document.getElementById("toast-container");
+let currentToast = null;
+
+function notify(message, type = "success", duration = 3000) {
+  if (currentToast) {
+    dismissToast(currentToast);
+  }
+
+  if (!toastContainer) { 
+    console.error("Toast container not found.");
+    return;
+  }
+
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+
+  if (type === "loading") {
+    toast.innerHTML = `${message} <div class="loading-spinner"></div>`;
+  } else {
+    toast.textContent = message;
+  }
+
+  toast.addEventListener("click", () => {
+    dismissToast(toast);
+  });
+
+  toastContainer.appendChild(toast);
+  currentToast = toast;
+
+  setTimeout(() => {
+    toast.classList.add("show");
+  }, 10);
+
+  if (type !== "loading") {
+    setTimeout(() => {
+      dismissToast(toast);
+    }, duration);
+  }
+}
+
+function dismissToast(toastElement) {
+  toastElement.classList.remove("show");
+  toastElement.addEventListener(
+    "transitionend",
+    () => {
+      if (!toastElement.classList.contains("show")) {
+        toastElement.remove();
+        if (currentToast === toastElement) {
+          currentToast = null;
+        }
+      }
+    },
+    { once: true }
+  );
+}
+
+// ================== Navbar Auth Button Status and Logout Handling =================
+
+const authBtn = document.querySelector(".sign-up");
+
+async function updateNavbarAuthState() {
+  if (!authBtn) return; 
+  const token = await getValidAccessToken();
+
+  if (token) {
+    authBtn.textContent = "Logout";
+    authBtn.onclick = handleLogout;
+  } else {
+    authBtn.textContent = "Sign up";
+    authBtn.onclick = () => (window.location.href = "auth.html");
+  }
+}
+
+// =========== dashboard redirection logic ==================
+
+function redirectDashboard(){
+    const accessToken = getAccessToken();
+    if(!accessToken){
+        window.location.href = "auth.html";
+        return;
+    }
+    window.location.href = "dashboard.html";
+}
+
+// ============ Handling logout =====================
+
+async function handleLogout() {
+  const refreshToken = getRefreshToken();
+  notify("Logging out...", "loading");
+
+  try {
+    if (refreshToken) {
+      const res = await fetch("https://expensetrackrio.up.railway.app/auth/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ refreshToken }),
+      });
+
+      if (!res.ok) {
+        console.warn("Backend logout failed:", await res.text());
+      }
+    }
+  } catch (err) {
+    console.error("Logout request failed:", err);
+  }
+
+  clearTokens();
+  updateNavbarAuthState();
+  notify("Logged out successfully!", "success");
+
+  setTimeout(() => {
+    if (!window.location.pathname.includes("index.html")) {
+      window.location.href = "index.html";
+    } else {
+      window.location.reload();
+    }
+  }, 1200);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateNavbarAuthState();
+});
+
+// ================== Helper: Token Storage ==================
+
+function saveTokens({ accessToken, refreshToken }) {
+  localStorage.setItem("accessToken", accessToken);
+  localStorage.setItem("refreshToken", refreshToken);
+}
+
+function getAccessToken() {
+  return localStorage.getItem("accessToken");
+}
+
+function getRefreshToken() {
+  return localStorage.getItem("refreshToken");
+}
+
+function clearTokens() {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
+}
+
+// ================== Token Refresh and Expiry ==================
+
+async function refreshAccessToken() {
+  const refreshToken = getRefreshToken();
+  if (!refreshToken) return null;
+
+  try {
+    const res = await fetch("https://expensetrackrio.up.railway.app/auth/refresh", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ refreshToken }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      saveTokens(data);
+      return data.accessToken;
+    } else {
+      const errorText = await res.text();
+      console.error("Token refresh failed:", res.status, errorText);
+      clearTokens();
+      return null;
+    }
+  } catch (err) {
+    console.error("Refresh failed:", err);
+    clearTokens();
+    return null;
+  }
+}
+
+async function getValidAccessToken() {
+  let token = getAccessToken();
+  if (!token) return null;
+
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    const now = Date.now() / 1000;
+
+    if (payload.exp < now) {
+      console.log("Access token expired. Refreshing...");
+      token = await refreshAccessToken();
+    }
+  } catch (e) {
+    console.warn("Invalid access token found. Clearing tokens.", e);
+    clearTokens();
+    token = null;
+  }
+
+  return token;
+}
+
+// ================== NEW: Secure Fetch Function ==================
+
+async function secureFetch(url, options = {}) {
+  const token = await getValidAccessToken();
+
+  if (!token) {
+    console.error("No valid access token. User must log in.");
+    window.location.href = "auth.html";
+    return Promise.reject("Unauthorized: No valid token.");
+  }
+
+  options.headers = {
+    ...options.headers,
+    "Authorization": `Bearer ${token}`
+  };
+
+  return fetch(url, options);
+}
+
+// ================== Login Validation ==================
+
+const loginEmail = document.getElementById("login-email");
+const loginPassword = document.getElementById("login-password");
+
+const loginEmailError = document.getElementById("loginEmailError");
+const loginPasswordError = document.getElementById("loginPasswordError");
+
+function validateLoginEmail() {
+  const email = loginEmail.value.trim();
+  const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/;
+  if (email === "") {
+    loginEmailError.textContent = "Email is required.";
+    return false;
+  } else if (!pattern.test(email)) {
+    loginEmailError.textContent = "Invalid email format.";
+    return false;
+  } else {
+    loginEmailError.textContent = "";
+    return true;
+  }
+}
+
+function validateLoginPassword() {
+  const password = loginPassword.value.trim();
+  if (password === "") {
+    loginPasswordError.textContent = "Password is required.";
+    return false;
+  } else if (password.length < 6) {
+    loginPasswordError.textContent =
+      "Password must be at least 6 characters.";
+    return false;
+  } else {
+    loginPasswordError.textContent = "";
+    return true;
+  }
+}
+
+if (loginEmail) { 
+  loginEmail.addEventListener("blur", validateLoginEmail);
+}
+if (loginPassword) { 
+  loginPassword.addEventListener("blur", validateLoginPassword);
+}
+
+if (loginForm) { 
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const validEmail = validateLoginEmail();
+    const validPass = validateLoginPassword();
+    if (!(validEmail && validPass)) return;
+
+    const loginData = {
+      email: loginEmail.value.trim(),
+      password: loginPassword.value.trim(),
+    };
+
+    notify("Logging in...", "loading");
+
+    try {
+      const res = await fetch("https://expensetrackrio.up.railway.app/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginData),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        saveTokens(data);
+        notify("Login successful!", "success");
+        loginForm.reset();
+        updateNavbarAuthState();
+        window.location.href = "dashboard.html";
+      } else {
+        const err = await res.json();
+        notify("Invalid credentials.", "error");
+      }
+    } catch (err) {
+      notify("Could not connect to server!", "error");
+    }
+  });
+}
 }
 
 function switchToLoginAfterRegister() {
@@ -443,6 +773,7 @@ if (sendOtpBtn) {
 
       if (response.ok) {
         notify("OTP sent successfully! Please check your email.", "success");
+        alert("Please check your spam folder as well in not in your email inbox");
         const otpSection = document.getElementById("otp-section");
         if (otpSection) {
           otpSection.classList.remove("hidden");
@@ -628,6 +959,7 @@ if (forgotPasswordForm) {
 
             if (res.ok) {
                 notify("Reset link sent! Check your email.", "success");
+                alert("please check your spam as well if not in your email inbox");
                 forgotPasswordForm.reset();
             } else {
                 const err = await res.text();
