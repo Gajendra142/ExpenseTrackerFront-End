@@ -773,7 +773,7 @@ if (sendOtpBtn) {
 
       if (response.ok) {
         notify("OTP sent successfully! Please check your email.", "success");
-        alert("Please check your spam folder as well in not in your email inbox");
+        alert("Please check your spam folder as well, if not in your email inbox");
         const otpSection = document.getElementById("otp-section");
         if (otpSection) {
           otpSection.classList.remove("hidden");
