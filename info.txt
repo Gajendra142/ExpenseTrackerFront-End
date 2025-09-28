@@ -1882,6 +1882,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 ============================ auth.js file stage 6 ======================
+
 // ================== Toggle Login & Register ==================
 
 const loginForm = document.getElementById("login-form");
